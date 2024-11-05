@@ -47,26 +47,26 @@ export class RealTimeArbitrageComponent implements OnDestroy {
   toggleRealTimeEvents() {
     this.areEventsFiring = !this.areEventsFiring;
 
-    if (this.areEventsFiring) {
-      this.arbitrageEventsService.connectToRealTimeEvents().subscribe(data => {
-        this.handleArbitrageData(data)
-      }, (error: string) => {
-        this.matSnackBar.open(error, 'Close', {panelClass: 'arb-snack-bar', duration: 3000})
-        this.areEventsFiring = false;
-        this.arbitrageEventsService.disconnectFromRealTimeEvents();
-        this.cdr.markForCheck();
-      });
-    } else {
-      this.arbitrageEventsService.disconnectFromRealTimeEvents();
-    }
-
     // if (this.areEventsFiring) {
-    //   this.arbitrageMockDataSubscription = this.arbitrageDataService.listenForArbitrageDataEventsFromAllTime(false).subscribe(res => {
-    //     this.handleArbitrageData(res)
-    //   })
+    //   this.arbitrageEventsService.connectToRealTimeEvents().subscribe(data => {
+    //     this.handleArbitrageData(data)
+    //   }, (error: string) => {
+    //     this.matSnackBar.open(error, 'Close', {panelClass: 'arb-snack-bar', duration: 3000})
+    //     this.areEventsFiring = false;
+    //     this.arbitrageEventsService.disconnectFromRealTimeEvents();
+    //     this.cdr.markForCheck();
+    //   });
     // } else {
-    //   this.arbitrageMockDataSubscription.unsubscribe();
+    //   this.arbitrageEventsService.disconnectFromRealTimeEvents();
     // }
+
+    if (this.areEventsFiring) {
+      this.arbitrageMockDataSubscription = this.arbitrageDataService.listenForArbitrageDataEventsFromAllTime(false).subscribe(res => {
+        this.handleArbitrageData(res)
+      })
+    } else {
+      this.arbitrageMockDataSubscription.unsubscribe();
+    }
    
   }
 

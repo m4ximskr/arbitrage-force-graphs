@@ -31,6 +31,8 @@ export class AllTimeArbitrageComponent {
 
   dataLoaded = signal(false);
 
+  private allTimeData$ = new BehaviorSubject<ArbitrageGraphData[]>([]);
+
   constructor(
     private arbitrageGraphService: ArbitrageGraphService,
     private arbitrageGraphFiltersService: ArbitrageGraphFiltersService,
@@ -40,7 +42,7 @@ export class AllTimeArbitrageComponent {
     private arbitrageDataService: ArbitrageDataService,
   ) {
     combineLatest([
-      this.arbitrageEventsService.allTimeData$,
+      this.allTimeData$,
       this.timelineFormControl.valueChanges.pipe(throttleTime(100)),
       this.arbitrageGraphFiltersService.listenForLifetimeFilterChanges()
     ])
@@ -61,10 +63,11 @@ export class AllTimeArbitrageComponent {
 
     this.dataLoading.set(true);
 
-    const source$ = this.arbitrageEventsService.getAllTimeData()
-    // const source$ = this.arbitrageDataService.getArbitrageDataEventsFromAllTime(false)
+    // const source$ = this.arbitrageEventsService.getAllTimeData()
+    const source$ = this.arbitrageDataService.getArbitrageDataEventsFromAllTime(false)
 
-    source$.subscribe(() => {
+    source$.subscribe((res) => {
+      this.allTimeData$.next(res)
       this.dataLoading.set(false);
       this.matSnackBar.open('Arbitrage data succefully loaded', 'Close', {panelClass: 'arb-snack-bar', duration: 3000})
     }, (error) => {
@@ -96,6 +99,7 @@ export class AllTimeArbitrageComponent {
     })
 
     const newArbIds = new Set([...newArbsMap.keys()]);
+
     const arbIdsToDelete = new Set([...this.arbitrageGraphService.arbNodesSet].filter(arbNodeId => !newArbIds.has(arbNodeId)))
 
     let updatedNodes = this.graphNodes();
