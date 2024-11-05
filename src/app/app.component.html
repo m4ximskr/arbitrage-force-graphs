@@ -1,0 +1,38 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over">
+    <button mat-mini-fab class="sidenav-menu-button" (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <div class="sidenav-wrapper">
+      <div class="navigation">
+        <a mat-button routerLink="/real-time" (click)="sidenav.close()">Real time arbitrage</a>
+        <a mat-button routerLink="/all-time" (click)="sidenav.close()">All time arbitrage</a>
+      </div>
+  
+      <form [formGroup]="credentialsForm" (ngSubmit)="onSubmit()">
+        <div *ngIf="isEntered" class="info"><mat-icon>check_circle</mat-icon> Key set!</div>
+
+        <mat-form-field>
+          <mat-label>Api Key</mat-label>
+          <input matInput type="password" name="password" autocomplete="current-password" formControlName="apiKey">
+        </mat-form-field>
+        <button mat-flat-button type="submit" [disabled]="!credentialsForm.value.apiKey">
+          Save
+        </button>
+      </form>
+    </div>
+  
+    
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+      <button mat-mini-fab class="sidenav-menu-button" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+    <div class="page-wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

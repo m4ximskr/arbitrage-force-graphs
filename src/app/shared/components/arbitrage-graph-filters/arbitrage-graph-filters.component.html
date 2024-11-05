@@ -1,0 +1,33 @@
+<div class="arbitrage-graph-filters-wrapper">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="panel-title">
+            <div>Filters</div>
+            <button mat-flat-button (click)="clearFilters($event)">Clear filters</button>
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <form [formGroup]="filtersForm">
+        <app-range-filter label="Profit" formControlName="profit"></app-range-filter>
+        <app-range-filter label="Amount" formControlName="amount"></app-range-filter>
+
+        <div class="filters-grid">
+          <app-chip-filter label="Exchanges" formControlName="exchanges"></app-chip-filter>
+          <app-chip-filter label="Chains" formControlName="chains"></app-chip-filter>
+          <app-chip-filter label="Symbols" formControlName="symbols"></app-chip-filter>
+
+          <div class="form-filed">
+            <div>Arbitrage lifetime</div>
+            <mat-form-field>
+              <mat-label>Enter seconds</mat-label>
+              <input matInput #input type="number" formControlName="lifetime" (keyup.enter)="handleInputKeyupEnter(this.lifetimeFormControl, input.value)">
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

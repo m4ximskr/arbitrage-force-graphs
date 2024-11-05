@@ -1,0 +1,31 @@
+.data-controls {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-column-gap: 10px;
+
+  .info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    mat-icon {
+      color: green;
+    }
+  }
+
+  button {
+    width: 150px;
+  
+    mat-spinner {
+      ::ng-deep {
+        svg {
+          stroke: white;
+        }
+      }
+    }
+  }
+}

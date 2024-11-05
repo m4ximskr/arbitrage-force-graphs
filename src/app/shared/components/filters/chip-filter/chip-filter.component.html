@@ -1,0 +1,26 @@
+<div class="chips-filter-wrapper">
+  <div>{{label}}</div>
+
+  <mat-form-field>
+    <mat-label>Enter {{label}}</mat-label>
+    <mat-chip-grid #chipGrid>
+      @for (option of options(); track option) {
+      <mat-chip-row
+        [editable]="true"
+        (removed)="remove(option)"
+        (edited)="edit(option, $event)"
+      >
+      {{option.name}}
+      <button matChipRemove>
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip-row>
+      }
+      <input
+        [matChipInputFor]="chipGrid"
+        (matChipInputTokenEnd)="add($event)"
+      />
+    </mat-chip-grid>
+  </mat-form-field>
+</div>
+

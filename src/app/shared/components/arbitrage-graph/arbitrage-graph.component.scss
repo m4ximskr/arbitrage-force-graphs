@@ -1,0 +1,21 @@
+.arbitrage-graph-wrapper {
+  ::ng-deep {
+    .graph-tooltip {
+      color: white;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 20px;
+
+      .profit {
+        font-size: 25px;
+        font-weight: 600;
+      }
+
+      .title {
+        font-size: 18px;
+        font-weight: 600;
+      }
+    }
+  }
+}

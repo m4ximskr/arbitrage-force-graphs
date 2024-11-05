@@ -1,0 +1,17 @@
+<div class="all-time-arbitrage">
+  <app-arbitrage-graph-filters></app-arbitrage-graph-filters>
+  <app-arbitrage-graph [nodes]="graphNodes()" [links]="graphLinks()" [currentTimestamp]="timelineTimestamp()"></app-arbitrage-graph>
+  <app-timeline [maxTime]="maxTime" [startTimestamp]="startTimestamp" [formControl]="timelineFormControl"></app-timeline>
+  <div class="data-controls">
+    @if (dataLoaded()) {
+      <div class="info"><mat-icon>check_circle</mat-icon> Data loaded!</div>
+    }
+    <button mat-flat-button (click)="getAllTimeData()">
+      @if (dataLoading()) {
+        <mat-spinner diameter="30"></mat-spinner>
+      } @else {
+        Load data
+      }
+    </button>
+  </div>
+</div>

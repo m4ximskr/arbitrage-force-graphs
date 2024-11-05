@@ -1,0 +1,25 @@
+<div class="timeline-wrapper">
+
+  <div class="player">
+    <button mat-flat-button (click)="togglePlay()">
+      <mat-icon>{{ isPlaying ? 'pause' : 'play_arrow' }}</mat-icon>
+      {{isPlaying ? 'Stop' : 'Start'}}
+    </button>
+
+    <ngx-slider
+      [options]="sliderOptions"
+      [formControl]="timelineFormControl"
+      (userChangeStart)="stopTimeline()"
+    >
+    </ngx-slider>
+  </div>
+
+  <mat-form-field class="time-step-selector">
+    <mat-label>Time step</mat-label>
+    <mat-select [formControl]="timeUnitFormControl">
+      @for (timeUnitOption of timeUnitOptions; track timeUnitOption.value) {
+      <mat-option [value]="timeUnitOption.value">{{timeUnitOption.label}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</div>

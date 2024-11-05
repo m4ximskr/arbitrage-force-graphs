@@ -1,0 +1,17 @@
+<div class="range-filter-wrapper">
+  <div>{{label}}</div>
+
+  <form [formGroup]="rangeFilterForm" (ngSubmit)="submitForm()">
+    <mat-form-field>
+      <mat-label>From</mat-label>
+      <input matInput formControlName="from">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>To</mat-label>
+      <input matInput formControlName="to">
+    </mat-form-field>
+
+    <button hidden type="submit">Submit</button>
+  </form>
+</div>

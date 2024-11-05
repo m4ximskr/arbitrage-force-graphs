@@ -1,0 +1,21 @@
+{
+  "/api/**": {
+    "target": "https://xxx.xxx/api",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api": ""
+    }
+  },
+  "/socket.io": {
+    "target": "wss://xxx.xxx/socket.io",
+    "secure": false,
+    "ws": true,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/socket.io": ""
+    }
+  }
+}

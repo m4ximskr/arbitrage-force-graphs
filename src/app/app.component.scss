@@ -1,0 +1,45 @@
+.sidenav-wrapper {
+  display: grid;
+  grid-template-rows: auto max-content;
+  height: 100%;
+
+  .navigation {
+    padding: 50px 5px 5px 5px;
+    display: grid;
+    grid-template-rows: max-content;
+    grid-row-gap: 10px;
+  }
+
+  form {
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    grid-template-columns: max-content max-content;
+    grid-row-gap: 10px;
+
+    .info {
+      grid-column: 1 / span 2;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      mat-icon {
+        color: green;
+      }
+    }
+  }
+}
+
+.sidenav-menu-button {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 1;
+}
+
+.page-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}

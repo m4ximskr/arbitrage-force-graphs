@@ -1,0 +1,12 @@
+<div class="real-time-arbitrage">
+  <app-arbitrage-graph-filters></app-arbitrage-graph-filters>
+  <app-arbitrage-graph [nodes]="graphNodes()" [links]="graphLinks()"></app-arbitrage-graph>
+  <button mat-flat-button (click)="toggleRealTimeEvents()">
+    @if (areEventsFiring) {
+    <mat-icon>stop</mat-icon>
+    } @else {
+    <mat-icon>play_arrow</mat-icon>
+    }
+    {{areEventsFiring ? 'Stop' : 'Start'}}
+  </button>
+</div>

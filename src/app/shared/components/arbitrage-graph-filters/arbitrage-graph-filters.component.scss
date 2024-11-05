@@ -1,0 +1,34 @@
+.arbitrage-graph-filters-wrapper {
+  position: absolute;
+  z-index: 1;
+  left: 55px;
+
+  mat-expansion-panel {
+    background: rgba(255, 255, 255, 0.7);
+    width: 750px;
+
+    .panel-title {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    ::ng-deep {
+      .mat-expansion-panel-content {
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+      }
+    }
+  }
+
+  .filters-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 20px;
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+}
