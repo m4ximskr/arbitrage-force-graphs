@@ -62,7 +62,6 @@ export class AllTimeArbitrageComponent {
     }
 
     this.dataLoading.set(true);
-
     // const source$ = this.arbitrageEventsService.getAllTimeData()
     const source$ = this.arbitrageDataService.getArbitrageDataEventsFromAllTime(false)
 
